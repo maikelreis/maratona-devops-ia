@@ -1,4 +1,4 @@
-name: CI-CD
+name: Kube-News Pipeline
 
 on:
   push:
@@ -34,6 +34,14 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
+
+            - name: Removing current Kubernetes
+              uses: grebois/kube-tools@v1.5.2
+              with:
+                kubectl: 1.18.2
+                command: |
+                  echo "Deleting current Kubernetes deployments"
+                  kubectl delete -f 02-kube-news/k8s/deployment.yaml
 
             - name: Set up Kubeconfig
               uses: azure/k8s-set-context@v4
