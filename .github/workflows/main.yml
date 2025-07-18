@@ -34,8 +34,6 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
-              with:
-                command: "ls 02-kube-news"
 
             - name: Set up Kubeconfig
               uses: azure/k8s-set-context@v4
@@ -46,4 +44,4 @@ jobs:
               uses: azure/k8s-deploy@v5
               with:
                 manifests: 02-kube-news/k8s/deployment.yaml
-                images: fabriciosveronez/kube-news-maratona:v${{ github.run_number }}
+                images: maikelreis/kube-news-maratona:v${{ github.run_number }}
