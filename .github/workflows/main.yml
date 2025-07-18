@@ -34,6 +34,8 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
+              with:
+                command: "ls 02-kube-news"
 
             - name: Removing current Kubernetes
               uses: grebois/kube-tools@v1.5.2
